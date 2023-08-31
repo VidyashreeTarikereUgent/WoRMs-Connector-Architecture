@@ -1,0 +1,525 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix : <http://mapping.example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix gbif: <http://rs.gbif.org/terms/1.0/> .
+@prefix species: <http://example-species.com/> .
+@prefix taxon: <http://example-taxon.com/> .
+@prefix rmlt: <http://semweb.mmlab.be/ns/rml-target#> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix tree: <https://w3id.org/tree#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+:target_000 rdf:type rmlt:LogicalTarget, ldes:EventStreamTarget ;
+	rdfs:label "t1" ;
+	rmlt:serialization formats:Turtle ;
+	rmlt:target :void_000 ;
+	ldes:baseIRI <http://example.org/eventstream> ;
+	tree:shape <http://example.org/shape.shacl> ;
+	ldes:versionOfPath dcterms:isVersionOf .
+
+:void_000 rdf:type void:Dataset ;
+	void:dataDump <file://out_from_joined.ttl> .
+
+:map_taxonMapping_000 rml:logicalSource :source_000 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "taxonMapping" ;
+	rr:subjectMap :s_000 ;
+	rr:predicateObjectMap :pom_002, :pom_003, :pom_004, :pom_005, :pom_006, :pom_007, :pom_008, :pom_009, :pom_010, :pom_011, :pom_012, :pom_013, :pom_014, :pom_015, :pom_016, :pom_017, :pom_018, :pom_019, :pom_020, :pom_021, :pom_022, :pom_023, :pom_024, :pom_025, :pom_026, :pom_027, :pom_028, :pom_029, :pom_030, :pom_031, :pom_032, :pom_033, :pom_034, :pom_035, :pom_036, :pom_037, :pom_038, :pom_039 .
+
+:source_000 rdf:type rml:LogicalSource ;
+	rml:source :csvw_000 ;
+	rml:referenceFormulation ql:CSV .
+
+:csvw_000 rdf:type csvw:Table ;
+	csvw:url "/home/idlab149/Documents/maregraph/connector-architecture/Vidya/joined.tsv" ;
+	csvw:dialect :csvw-dialect_000 .
+
+:csvw-dialect_000 rdf:type csvw:Dialect ;
+	csvw:delimiter "\t" .
+
+:s_000 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_000 ;
+	rml:logicalTarget :target_000 .
+
+:fn_000 rml:logicalSource :source_000 ;
+	rr:predicateObjectMap :pomexec_000, :pom_000, :pom_001 .
+
+:pomexec_000 rr:predicateMap :pmexec_000 ;
+	rr:objectMap :omexec_000 .
+
+:pmexec_000 rr:constant fno:executes .
+
+:omexec_000 rr:constant "http://example.com/idlab/function/generateUniqueIRI" ;
+	rr:termType rr:IRI .
+
+:pom_000 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_000 ;
+	rr:objectMap :om_000 .
+
+:pm_000 rdf:type rr:PredicateMap ;
+	rr:constant <http://example.com/idlab/function/iri> .
+
+:om_000 rdf:type rr:ObjectMap ;
+	rml:reference "taxonID" ;
+	rr:termType rr:IRI .
+
+:pom_001 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_001 ;
+	rr:objectMap :om_001 .
+
+:pm_001 rdf:type rr:PredicateMap ;
+	rr:constant <http://example.com/idlab/function/watchedProperty> .
+
+:om_001 rdf:type rr:ObjectMap ;
+	rr:template "taxonID={taxonID}" ;
+	rr:termType rr:Literal .
+
+:pom_002 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_002 ;
+	rr:objectMap :om_002 .
+
+:pm_002 rdf:type rr:PredicateMap ;
+	rr:constant dwc:scientificNameID .
+
+:om_002 rdf:type rr:ObjectMap ;
+	rml:reference "scientificNameID" ;
+	rr:termType rr:Literal .
+
+:pom_003 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_003 ;
+	rr:objectMap :om_003 .
+
+:pm_003 rdf:type rr:PredicateMap ;
+	rr:constant dwc:acceptedNameUsageID .
+
+:om_003 rdf:type rr:ObjectMap ;
+	rml:reference "acceptedNameUsageID" ;
+	rr:termType rr:Literal .
+
+:pom_004 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_004 ;
+	rr:objectMap :om_004 .
+
+:pm_004 rdf:type rr:PredicateMap ;
+	rr:constant dwc:parentNameUsageID .
+
+:om_004 rdf:type rr:ObjectMap ;
+	rml:reference "parentNameUsageID" ;
+	rr:termType rr:Literal .
+
+:pom_005 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_005 ;
+	rr:objectMap :om_005 .
+
+:pm_005 rdf:type rr:PredicateMap ;
+	rr:constant dwc:namePublishedInID .
+
+:om_005 rdf:type rr:ObjectMap ;
+	rml:reference "namePublishedInID" ;
+	rr:termType rr:Literal .
+
+:pom_006 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_006 ;
+	rr:objectMap :om_006 .
+
+:pm_006 rdf:type rr:PredicateMap ;
+	rr:constant dwc:scientificName .
+
+:om_006 rdf:type rr:ObjectMap ;
+	rml:reference "scientificName" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_007 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_007 ;
+	rr:objectMap :om_007 .
+
+:pm_007 rdf:type rr:PredicateMap ;
+	rr:constant dwc:acceptedNameUsage .
+
+:om_007 rdf:type rr:ObjectMap ;
+	rml:reference "acceptedNameUsage" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_008 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_008 ;
+	rr:objectMap :om_008 .
+
+:pm_008 rdf:type rr:PredicateMap ;
+	rr:constant dwc:parentNameUsage .
+
+:om_008 rdf:type rr:ObjectMap ;
+	rml:reference "parentNameUsage" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_009 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_009 ;
+	rr:objectMap :om_009 .
+
+:pm_009 rdf:type rr:PredicateMap ;
+	rr:constant dwc:namePublishedIn .
+
+:om_009 rdf:type rr:ObjectMap ;
+	rml:reference "namePublishedIn" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_010 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_010 ;
+	rr:objectMap :om_010 .
+
+:pm_010 rdf:type rr:PredicateMap ;
+	rr:constant dwc:namePublishedInYear .
+
+:om_010 rdf:type rr:ObjectMap ;
+	rml:reference "namePublishedInYear" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:integer .
+
+:pom_011 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_011 ;
+	rr:objectMap :om_011 .
+
+:pm_011 rdf:type rr:PredicateMap ;
+	rr:constant dwc:class .
+
+:om_011 rdf:type rr:ObjectMap ;
+	rml:reference "class" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_012 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_012 ;
+	rr:objectMap :om_012 .
+
+:pm_012 rdf:type rr:PredicateMap ;
+	rr:constant dwc:order .
+
+:om_012 rdf:type rr:ObjectMap ;
+	rml:reference "order" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_013 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_013 ;
+	rr:objectMap :om_013 .
+
+:pm_013 rdf:type rr:PredicateMap ;
+	rr:constant dwc:family .
+
+:om_013 rdf:type rr:ObjectMap ;
+	rml:reference "family" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_014 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_014 ;
+	rr:objectMap :om_014 .
+
+:pm_014 rdf:type rr:PredicateMap ;
+	rr:constant dwc:genus .
+
+:om_014 rdf:type rr:ObjectMap ;
+	rml:reference "genus" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_015 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_015 ;
+	rr:objectMap :om_015 .
+
+:pm_015 rdf:type rr:PredicateMap ;
+	rr:constant dwc:subgenus .
+
+:om_015 rdf:type rr:ObjectMap ;
+	rml:reference "subgenus" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_016 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_016 ;
+	rr:objectMap :om_016 .
+
+:pm_016 rdf:type rr:PredicateMap ;
+	rr:constant dwc:specificEpithet .
+
+:om_016 rdf:type rr:ObjectMap ;
+	rml:reference "specificEpithet" ;
+	rr:termType rr:Literal .
+
+:pom_017 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_017 ;
+	rr:objectMap :om_017 .
+
+:pm_017 rdf:type rr:PredicateMap ;
+	rr:constant dwc:infraspecificEpithet .
+
+:om_017 rdf:type rr:ObjectMap ;
+	rml:reference "infraspecificEpithet" ;
+	rr:termType rr:Literal .
+
+:pom_018 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_018 ;
+	rr:objectMap :om_018 .
+
+:pm_018 rdf:type rr:PredicateMap ;
+	rr:constant dwc:taxonRank .
+
+:om_018 rdf:type rr:ObjectMap ;
+	rml:reference "taxonRank" ;
+	rr:termType rr:Literal .
+
+:pom_019 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_019 ;
+	rr:objectMap :om_019 .
+
+:pm_019 rdf:type rr:PredicateMap ;
+	rr:constant dwc:scientificNameAuthorship .
+
+:om_019 rdf:type rr:ObjectMap ;
+	rml:reference "scientificNameAuthorship" ;
+	rr:termType rr:Literal .
+
+:pom_020 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_020 ;
+	rr:objectMap :om_020 .
+
+:pm_020 rdf:type rr:PredicateMap ;
+	rr:constant dwc:nomenclaturalCode .
+
+:om_020 rdf:type rr:ObjectMap ;
+	rml:reference "nomenclaturalCode" ;
+	rr:termType rr:Literal .
+
+:pom_021 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_021 ;
+	rr:objectMap :om_021 .
+
+:pm_021 rdf:type rr:PredicateMap ;
+	rr:constant dwc:taxonomicStatus .
+
+:om_021 rdf:type rr:ObjectMap ;
+	rml:reference "taxonomicStatus" ;
+	rr:termType rr:Literal .
+
+:pom_022 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_022 ;
+	rr:objectMap :om_022 .
+
+:pm_022 rdf:type rr:PredicateMap ;
+	rr:constant dwc:nomenclaturalStatus .
+
+:om_022 rdf:type rr:ObjectMap ;
+	rml:reference "nomenclaturalStatus" ;
+	rr:termType rr:Literal .
+
+:pom_023 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_023 ;
+	rr:objectMap :om_023 .
+
+:pm_023 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:modified .
+
+:om_023 rdf:type rr:ObjectMap ;
+	rml:reference "modified" ;
+	rr:termType rr:Literal .
+
+:pom_024 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_024 ;
+	rr:objectMap :om_024 .
+
+:pm_024 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:bibliographicCitation .
+
+:om_024 rdf:type rr:ObjectMap ;
+	rml:reference "bibliographicCitation" ;
+	rr:termType rr:Literal .
+
+:pom_025 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_025 ;
+	rr:objectMap :om_025 .
+
+:pm_025 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:references .
+
+:om_025 rdf:type rr:ObjectMap ;
+	rml:reference "references" ;
+	rr:termType rr:Literal .
+
+:pom_026 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_026 ;
+	rr:objectMap :om_026 .
+
+:pm_026 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:license .
+
+:om_026 rdf:type rr:ObjectMap ;
+	rml:reference "license" ;
+	rr:termType rr:Literal .
+
+:pom_027 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_027 ;
+	rr:objectMap :om_027 .
+
+:pm_027 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:rightsHolder .
+
+:om_027 rdf:type rr:ObjectMap ;
+	rml:reference "rightsHolder" ;
+	rr:termType rr:Literal .
+
+:pom_028 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_028 ;
+	rr:objectMap :om_028 .
+
+:pm_028 rdf:type rr:PredicateMap ;
+	rr:constant dwc:datasetName .
+
+:om_028 rdf:type rr:ObjectMap ;
+	rml:reference "datasetName" ;
+	rr:termType rr:Literal .
+
+:pom_029 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_029 ;
+	rr:objectMap :om_029 .
+
+:pm_029 rdf:type rr:PredicateMap ;
+	rr:constant dwc:institutionCode .
+
+:om_029 rdf:type rr:ObjectMap ;
+	rml:reference "institutionCode" ;
+	rr:termType rr:Literal .
+
+:pom_030 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_030 ;
+	rr:objectMap :om_030 .
+
+:pm_030 rdf:type rr:PredicateMap ;
+	rr:constant dwc:datasetID .
+
+:om_030 rdf:type rr:ObjectMap ;
+	rml:reference "datasetID" ;
+	rr:termType rr:Literal .
+
+:pom_031 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_031 ;
+	rr:objectMap :om_031 .
+
+:pm_031 rdf:type rr:PredicateMap ;
+	rr:constant dwc:vernacularname .
+
+:om_031 rdf:type rr:ObjectMap ;
+	rml:reference "vernacularName" ;
+	rr:termType rr:Literal .
+
+:pom_032 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_032 ;
+	rr:objectMap :om_032 .
+
+:pm_032 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:source .
+
+:om_032 rdf:type rr:ObjectMap ;
+	rml:reference "source" ;
+	rr:termType rr:Literal .
+
+:pom_033 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_033 ;
+	rr:objectMap :om_033 .
+
+:pm_033 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:language .
+
+:om_033 rdf:type rr:ObjectMap ;
+	rml:reference "language" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:string .
+
+:pom_034 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_034 ;
+	rr:objectMap :om_034 .
+
+:pm_034 rdf:type rr:PredicateMap ;
+	rr:constant gbif:isPreferredName .
+
+:om_034 rdf:type rr:ObjectMap ;
+	rml:reference "isPreferredName" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:boolean .
+
+:pom_035 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_035 ;
+	rr:objectMap :om_035 .
+
+:pm_035 rdf:type rr:PredicateMap ;
+	rr:constant gbif:isMarine .
+
+:om_035 rdf:type rr:ObjectMap ;
+	rml:reference "isMarine" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:boolean .
+
+:pom_036 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_036 ;
+	rr:objectMap :om_036 .
+
+:pm_036 rdf:type rr:PredicateMap ;
+	rr:constant gbif:isFreshwater .
+
+:om_036 rdf:type rr:ObjectMap ;
+	rml:reference "isFreshwater" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:boolean .
+
+:pom_037 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_037 ;
+	rr:objectMap :om_037 .
+
+:pm_037 rdf:type rr:PredicateMap ;
+	rr:constant gbif:isTerrestrial .
+
+:om_037 rdf:type rr:ObjectMap ;
+	rml:reference "isTerrestrial" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:boolean .
+
+:pom_038 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_038 ;
+	rr:objectMap :om_038 .
+
+:pm_038 rdf:type rr:PredicateMap ;
+	rr:constant gbif:isExtinct .
+
+:om_038 rdf:type rr:ObjectMap ;
+	rml:reference "isExtinct" ;
+	rr:termType rr:Literal ;
+	rr:datatype xsd:boolean .
+
+:pom_039 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_039 ;
+	rr:objectMap :om_039 .
+
+:pm_039 rdf:type rr:PredicateMap ;
+	rr:constant dcterms:isVersionOf .
+
+:om_039 rdf:type rr:ObjectMap ;
+	rml:reference "taxonID" ;
+	rr:termType rr:IRI .
+

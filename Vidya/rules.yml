@@ -1,0 +1,126 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  owl: http://www.w3.org/2002/07/owl#
+  dwc: http://rs.tdwg.org/dwc/terms/
+  dcterms: http://purl.org/dc/terms/
+  gbif: http://rs.gbif.org/terms/1.0/
+  species: http://example-species.com/
+  taxon: http://example-taxon.com/
+
+sources:
+  data-source2: [species.csv~csv]
+  data-source: [vernacular.csv~csv]
+  data-source3: [taxon.csv~csv]
+ 
+targets:
+  t1:
+    access: out1.ttl
+    type: void
+    serialization: turtle
+  t2:
+    access: out2.ttl
+    type: void
+    serialization: turtle
+  t3:
+    access: out3.ttl
+    type: void
+    serialization: turtle
+
+mappings:
+  taxonMapping:
+        sources: 
+          - access: taxon3.tsv
+            referenceFormulation: csv
+            delimiter: "\t"
+        subjects:
+          - value: $(taxonID)
+            targets: t2
+            ldes:
+              watchedProperties: [$(taxonID)]
+              versionOfPath: []    
+                        
+        po:
+          - [dwc:scientificNameID,$(scientificNameID)]
+          - [dwc:acceptedNameUsageID,$(acceptedNameUsageID)]
+          - [dwc:parentNameUsageID,$(parentNameUsageID)]
+          - [dwc:namePublishedInID,$(namePublishedInID)]
+          - [dwc:scientificName,$(scientificName),xsd:string]
+          - [dwc:acceptedNameUsage,$(acceptedNameUsage),xsd:string]
+          - [dwc:parentNameUsage,$(parentNameUsage),xsd:string]
+          - [dwc:namePublishedIn,$(namePublishedIn),xsd:string]
+          - [dwc:namePublishedInYear,$(namePublishedInYear),xsd:integer]
+          - [dwc:class,$(class),xsd:string]
+          - [dwc:order,$(order),xsd:string]
+          - [dwc:family,$(family),xsd:string]
+          - [dwc:genus,$(genus),xsd:string]
+          - [dwc:subgenus,$(subgenus),xsd:string]
+          - [dwc:specificEpithet,$(specificEpithet)]
+          - [dwc:infraspecificEpithet,$(infraspecificEpithet)]
+          - [dwc:taxonRank,$(taxonRank)]
+          - [dwc:scientificNameAuthorship,$(scientificNameAuthorship)]
+          - [dwc:nomenclaturalCode,$(nomenclaturalCode)]
+          - [dwc:taxonomicStatus,$(taxonomicStatus)]
+          - [dwc:nomenclaturalStatus,$(nomenclaturalStatus)]
+          - [dcterms:modified,$(modified)]
+          - [dcterms:bibliographicCitation,$(bibliographicCitation)]
+          - [dcterms:references,$(references)]
+          - [dcterms:license,$(license)]
+          - [dcterms:rightsHolder,$(rightsHolder)]
+          - [dwc:datasetName,$(datasetName)]
+          - [dwc:institutionCode,$(institutionCode)]
+          - [dwc:datasetID,$(datasetID)]
+          - p: dwc:taxonID
+            o:
+            - mapping: vernacularName
+              condition:
+              function: equal
+              parameters: 
+              - [str1, $(taxonID), s]
+              - [str2, $(taxonID), o]        
+          - p: dwc:taxonID
+            o:
+            - mapping: species
+              condition:
+              function: equal
+              parameters: 
+              - [str1, $(taxonID), s]
+              - [str2, $(taxonID), o]     
+
+  vernacularName:
+        sources:
+          - access: vernacularName3.tsv
+            referenceFormulation: csv
+            delimiter: "\t"
+        subjects:
+          - value: $(taxonID)
+            targets: t3
+            
+        po:
+          - [dwc:vernacularname,$(vernacularName)]
+          - [dcterms:source,$(source)]
+          - [dcterms:language,$(language),xsd:string]
+          - [gbif:isPreferredName,$(isPreferredName),xsd:boolean]          
+            
+
+  species:
+        sources:
+          - access: speciesProfile3.tsv
+            referenceFormulation: csv
+            delimiter: "\t"
+        subjects:
+          - value: $(taxonID)
+            targets: t1            
+    
+        po:
+          - [gbif:isMarine,$(isMarine),xsd:boolean]
+          - [gbif:isFreshwater,$(isFreshwater),xsd:boolean]
+          - [gbif:isTerrestrial,$(isTerrestrial),xsd:boolean]
+          - [gbif:isExtinct,$(isExtinct),xsd:boolean]
+            
+   
+  
+         
+              
+  

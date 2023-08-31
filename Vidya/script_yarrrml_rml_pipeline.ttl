@@ -1,0 +1,77 @@
+@prefix js: <https://w3id.org/conn/js#> .
+@prefix ws: <https://w3id.org/conn/ws#> .
+@prefix : <https://w3id.org/conn#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <https://w3id.org/conn/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+
+<> owl:imports <https://raw.githubusercontent.com/TREEcg/connector-architecture/main/channel/file.ttl>.
+<> owl:imports <https://raw.githubusercontent.com/ajuvercr/rml-runner/master/ontology.ttl>.
+<> owl:imports <./node_modules/sds-processors/configs/sdsify.ttl>.
+<> owl:imports <./node_modules/@treecg/sds-storage-writer-mongo/step.ttl>.
+<> owl:imports <https://raw.githubusercontent.com/ajuvercr/js-runner/master/ontology.ttl>.
+<> owl:imports <../processor/rml-mapper-processor-ts/rmlMapper.ttl>.
+<> owl:imports </home/idlab149/Documents/execute-script-processors-ts/execute-script.ttl>.
+<> owl:imports <https://github.com/ajuvercr/sds-processors/configs/yarrrml.ttl>.
+
+[] a js:JsChannel;
+  :reader <ld/reader-js>;
+  :writer <ld/writer-js>.
+
+<ld/reader-js> a :JsReaderChannel.
+<ld/writer-js> a :JsWriterChannel.
+
+[] a js:JsChannel;
+  :reader <sds/reader-js>;
+  :writer <sds/writer-js>.
+
+<sds/reader-js> a :JsReaderChannel.
+<sds/writer-js> a :JsWriterChannel.
+
+[] a js:JsChannel;
+  :reader <ld/reader-js-script>;
+  :writer <ld/writer-js-script>.
+
+<ld/reader-js-script> a :JsReaderChannel.
+<ld/writer-js-script> a :JsWriterChannel.
+
+[] a js:JsChannel;
+  :reader <ld/reader-js-y2r>;
+  :writer <ld/writer-js-y2r>.
+
+<ld/reader-js-y2r> a :JsReaderChannel.
+<ld/writer-js-y2r> a :JsWriterChannel.
+
+
+<metadata/reader> a :FileReaderChannel;
+  :fileReadFirstContent "true";
+  :fileOnReplace "true";
+  :filePath <./metadataIn.ttl>.
+
+[] a js:ScriptExecute;
+  js:script_location </home/idlab149/Documents/execute-script-processors-ts/src/myScript.sh>;
+  js:script_output <ld/writer-js-script>.
+
+[] a js:Y2R;
+  js:input <./joinedRule.yml>;
+  js:output <ld/writer-js-y2r>.
+
+[] a js:RmlMapperReader;
+  js:rml_mapping_location <ld/reader-js-y2r>;
+  js:rml_data_output <ld/writer-js>;
+  rml:jarFile <./rmlmapper-6.2.0-r368-all.jar>.  
+
+[] a js:Sdsify;
+  js:input <ld/reader-js>;
+  js:output <sds/writer-js>;
+  js:stream <https://w3id.org/sds#Stream>.
+
+[] a js:Ingest;
+  js:dataInput <sds/reader-js>;
+  js:metadataInput <metadata/reader>;
+  js:metadataCollection "VIDYA_META_2";
+  js:dataCollection "VIDYA_DATA_2";
+  js:indexCollection "VIDYA_INDEX_2";
+  js:databaseUrl "mongodb://127.0.0.1:27017/ldes";
+  js:pageSize 150.

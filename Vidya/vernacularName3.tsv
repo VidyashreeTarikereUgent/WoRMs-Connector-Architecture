@@ -1,0 +1,30 @@
+taxonID	vernacularName	source	language	isPreferredName
+urn:lsid:marinespecies.org:taxname:2	dieren		DUT	0
+urn:lsid:marinespecies.org:taxname:2	animals		ENG	0
+urn:lsid:marinespecies.org:taxname:2	animaux		FRA	0
+urn:lsid:marinespecies.org:taxname:2	Tiere		DEU	0
+urn:lsid:marinespecies.org:taxname:2	動物界	Japan Agency for Marine-Earth Science and Technology. (2009 onwards). Biological Information System for Marine Life (BISMaL). Accessed on 2018-11-21.	JPN	0
+urn:lsid:marinespecies.org:taxname:3	planten		DUT	0
+urn:lsid:marinespecies.org:taxname:3	plants		ENG	0
+urn:lsid:marinespecies.org:taxname:3	植物界	Japan Agency for Marine-Earth Science and Technology. (2009 onwards). Biological Information System for Marine Life (BISMaL). Accessed on 2018-11-21.	JPN	0
+urn:lsid:marinespecies.org:taxname:3	egentliga växter	PESI (A Pan-European Species directories Infrastructure) focal points	SWE	0
+urn:lsid:marinespecies.org:taxname:4	svampar	PESI (A Pan-European Species directories Infrastructure) focal points	SWE	0
+urn:lsid:marinespecies.org:taxname:4	fungi	PESI (A Pan-European Species directories Infrastructure) focal points	ENG	0
+urn:lsid:marinespecies.org:taxname:4	菌界	Japan Agency for Marine-Earth Science and Technology. (2009 onwards). Biological Information System for Marine Life (BISMaL). Accessed on 2018-11-21.	JPN	0
+urn:lsid:marinespecies.org:taxname:5	protozoans	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	ENG	0
+urn:lsid:marinespecies.org:taxname:5	Protozoen	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	DEU	0
+urn:lsid:marinespecies.org:taxname:6	bacteria	PESI (A Pan-European Species directories Infrastructure) focal points	ENG	0
+urn:lsid:marinespecies.org:taxname:6	真正細菌ドメイン	Japan Agency for Marine-Earth Science and Technology. (2009 onwards). Biological Information System for Marine Life (BISMaL). Accessed on 2018-11-21.	JPN	0
+urn:lsid:marinespecies.org:taxname:8	古細菌ドメイン	Japan Agency for Marine-Earth Science and Technology. (2009 onwards). Biological Information System for Marine Life (BISMaL). Accessed on 2018-11-21.	JPN	0
+urn:lsid:marinespecies.org:taxname:11	繊毛虫門	Japan Agency for Marine-Earth Science and Technology. (2009 onwards). Biological Information System for Marine Life (BISMaL). Accessed on 2018-11-21.	JPN	0
+urn:lsid:marinespecies.org:taxname:11	trilhaardiertjes		DUT	0
+urn:lsid:marinespecies.org:taxname:13	Flagellaten	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	DEU	0
+urn:lsid:marinespecies.org:taxname:13	Geißeltierchen	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	DEU	0
+urn:lsid:marinespecies.org:taxname:13	Geißelträger	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	DEU	0
+urn:lsid:marinespecies.org:taxname:13	flagellates	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	ENG	0
+urn:lsid:marinespecies.org:taxname:13	mastigophorans	Cole, T. C. H. (2017). Wörterbuch der Wirbellosen / Dictionary of Invertebrates. Latein-Deutsch-English. <em>2017.</em> Springer Spektrum: Berlin. ISBN 978-3-662-52869-3. XII, 574 pp.	ENG	0
+urn:lsid:marinespecies.org:taxname:51	mollusques		FRA	0
+urn:lsid:marinespecies.org:taxname:51	weekdieren	Backeljau, T. (1986). Lijst van de recente mariene mollusken van België [List of the recent marine molluscs of Belgium]. Koninklijk Belgisch Instituut voor Natuurwetenschappen: Brussels, Belgium. 106 pp.	DUT	1
+urn:lsid:marinespecies.org:taxname:51	molluscs	Hayward, P. J.; Nelson-Smith, A.; Shields, C. (1996). Collins pocket guide: sea shore of Britain and Europe. <em>Collins pocket guides. Harper-Collins Publishers: London, UK. ISBN 0-00-219955-6.</em> 352 pp.	ENG	0
+urn:lsid:marinespecies.org:taxname:51	mollusken	Hayward, P.; Nelson-Smith, A.; Shields, C. (1999). Gids van kust en strand: flora en fauna [Coast and beach guide: flora and fauna]. Tirion: Baarn, Netherlands. ISBN 90-5210-327-5. 352, ill. pp.	DUT	0
+urn:lsid:marinespecies.org:taxname:51	moluscos		SPA	1

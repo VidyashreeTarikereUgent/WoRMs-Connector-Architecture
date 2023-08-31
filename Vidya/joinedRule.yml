@@ -1,0 +1,74 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  owl: http://www.w3.org/2002/07/owl#
+  dwc: http://rs.tdwg.org/dwc/terms/
+  dcterms: http://purl.org/dc/terms/
+  gbif: http://rs.gbif.org/terms/1.0/
+  species: http://example-species.com/
+  taxon: http://example-taxon.com/
+ 
+targets:
+  t1:
+    access: out_from_joined.ttl
+    type: void
+    serialization: turtle
+
+mappings:
+  taxonMapping:
+        sources: 
+          - access: joined.tsv
+            referenceFormulation: csv
+            delimiter: "\t"
+        subjects:
+          - value: $(taxonID)
+            targets: t1
+            ldes:
+              watchedProperties: [$(taxonID)]
+              versionOfPath: []    
+                        
+        po:
+          - [dwc:scientificNameID,$(scientificNameID)]
+          - [dwc:acceptedNameUsageID,$(acceptedNameUsageID)]
+          - [dwc:parentNameUsageID,$(parentNameUsageID)]
+          - [dwc:namePublishedInID,$(namePublishedInID)]
+          - [dwc:scientificName,$(scientificName),xsd:string]
+          - [dwc:acceptedNameUsage,$(acceptedNameUsage),xsd:string]
+          - [dwc:parentNameUsage,$(parentNameUsage),xsd:string]
+          - [dwc:namePublishedIn,$(namePublishedIn),xsd:string]
+          - [dwc:namePublishedInYear,$(namePublishedInYear),xsd:integer]
+          - [dwc:class,$(class),xsd:string]
+          - [dwc:order,$(order),xsd:string]
+          - [dwc:family,$(family),xsd:string]
+          - [dwc:genus,$(genus),xsd:string]
+          - [dwc:subgenus,$(subgenus),xsd:string]
+          - [dwc:specificEpithet,$(specificEpithet)]
+          - [dwc:infraspecificEpithet,$(infraspecificEpithet)]
+          - [dwc:taxonRank,$(taxonRank)]
+          - [dwc:scientificNameAuthorship,$(scientificNameAuthorship)]
+          - [dwc:nomenclaturalCode,$(nomenclaturalCode)]
+          - [dwc:taxonomicStatus,$(taxonomicStatus)]
+          - [dwc:nomenclaturalStatus,$(nomenclaturalStatus)]
+          - [dcterms:modified,$(modified)]
+          - [dcterms:bibliographicCitation,$(bibliographicCitation)]
+          - [dcterms:references,$(references)]
+          - [dcterms:license,$(license)]
+          - [dcterms:rightsHolder,$(rightsHolder)]
+          - [dwc:datasetName,$(datasetName)]
+          - [dwc:institutionCode,$(institutionCode)]
+          - [dwc:datasetID,$(datasetID)]
+          - [dwc:vernacularname,$(vernacularName)]
+          - [dcterms:source,$(source)]
+          - [dcterms:language,$(language),xsd:string]
+          - [gbif:isPreferredName,$(isPreferredName),xsd:boolean]          
+          - [gbif:isMarine,$(isMarine),xsd:boolean]
+          - [gbif:isFreshwater,$(isFreshwater),xsd:boolean]
+          - [gbif:isTerrestrial,$(isTerrestrial),xsd:boolean]
+          - [gbif:isExtinct,$(isExtinct),xsd:boolean]
+            
+   
+  
+         
+              
+  
